@@ -1,0 +1,55 @@
+ssg:
+  image: danillosilveira/apigateway:apidocker
+  mem_limit: 4096m
+  expose:
+    - "8777"
+  ports:
+    - "8080:8080"
+    - "8443:8443"
+    - "9443:9443"
+  environment:
+    SSG_CLUSTER_COMMAND: "create"
+    SSG_CLUSTER_HOST: "localhost"
+    SSG_CLUSTER_PASSWORD: "7layer"
+    SSG_DATABASE_TYPE: "mysql"
+    SSG_DATABASE_HOST: "mysql"
+    SSG_DATABASE_PORT: "3306"
+    SSG_DATABASE_NAME: "ssg"
+    SSG_DATABASE_USER: "gateway"
+    SSG_DATABASE_PASSWORD: "7layer"
+    SSG_DATABASE_ADMIN_USER: "root"
+    SSG_DATABASE_ADMIN_PASS: "7layer"
+    SSG_ADMIN_USER: "pmadmin"
+    SSG_ADMIN_PASS: "7layer"
+    SSG_LICENSE:
+    SSG_INTERNAL_SERVICES: "restman wsman"
+  links:
+    - mysql
+  volumes:
+    - ./custom_assertions/rest.tapioca-mainframe-basic_connector-0.0.1.jar:/opt/SecureSpan/Gateway/runtime/modules/lib/TapiocaBasicMainframeConnector.jar:rw
+    - ./s3270/s3270:/usr/local/bin/s3270:rw
+    - ./s3270/x3270if:/usr/local/bin/x3270if:rw
+#    - ./portal/base35-package.tgz:/opt/SecureSpan/base35-package.tgz
+#    - ./portal/setup-ssg-3.5.sh:/opt/SecureSpan/setup-ssg-3.5.sh
+mysql:
+  image: mysql:5.5
+  mem_limit: 1024m
+#  volumes:
+#    - ./mysqlconf:/etc/mysql/conf.d
+#    - ./mysqldata:/var/lib/mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=7layer
+hercules:
+  image: danillosilveira/hercules
+  mem_limit: 4096m
+  expose:
+    - "8084"
+    - "80"
+  ports:
+    - "8084:3270"
+    - "80:8080"
+  volumes:
+    - /opt/hercules/DASD:/opt/hercules/DASD:rw
+    - /opt/tapioca/hercules.cnf:/hercules.cnf:ro
+
+#Danillo Silveira Sec4You

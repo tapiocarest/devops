@@ -1,0 +1,137 @@
+#
+# Hercules Emulator Control file...
+# Description: z/OS 1.12
+# MaxShutdownSecs: 15
+#
+#
+# System parameters
+#
+
+ARCHMODE  z/Arch
+OSTAILOR  z/OS
+CPUSERIAL 08A89F
+CPUMODEL  2084
+LPARNAME  HERCULES
+LOADPARM  0A82DB..
+MODEL     EMULATOR
+PLANT     ZZ
+MAINSIZE  1024
+NUMCPU    4
+SYSEPOCH  1900
+TZOFFSET  -0000
+HTTPPORT  8080 AUTH HERCULES HERCULES
+PANTITLE  "ADCD z/OS 1.10 on Hercules"
+PANRATE   50
+CNSLPORT  3270
+
+PGMPRDOS  LICENSED
+
+# Card Readers
+#000C    3505    .util\zzsacard.bin
+
+# Card Punches
+#000D    3525    punch00d.txt ascii
+
+# Line Printers
+#000E    1403    print00e.txt crlf
+
+# DASD Devices
+0A80    3390    /opt/hercules/DASD/ZCRES1
+0A81    3390    /opt/hercules/DASD/ZCRES2
+0A82    3390    /opt/hercules/DASD/ZCSYS1
+0A83    3390    /opt/hercules/DASD/ZCUSS1
+0A84    3390    /opt/hercules/DASD/ZCDIS1
+0A85    3390    /opt/hercules/DASD/ZCDIS2
+0A86    3390    /opt/hercules/DASD/ZCDIS3
+0A87    3390    /opt/hercules/DASD/ZCDIS4
+0A88    3390    /opt/hercules/DASD/ZCDIS5
+0A89    3390    /opt/hercules/DASD/ZCDIS6
+0A8A    3390    /opt/hercules/DASD/ZCCI31
+0A8B    3390    /opt/hercules/DASD/ZCCI41
+0A8C    3390    /opt/hercules/DASD/ZCDB81
+0A8D    3390    /opt/hercules/DASD/ZCDB82
+0A8E    3390    /opt/hercules/DASD/ZCDB83
+0A8F    3390    /opt/hercules/DASD/ZCDB84
+0A90    3390    /opt/hercules/DASD/ZCDB91
+0A91    3390    /opt/hercules/DASD/ZCDB92
+0A92    3390    /opt/hercules/DASD/ZCDB93
+0A93    3390    /opt/hercules/DASD/ZCPRD1
+0A94    3390    /opt/hercules/DASD/ZCPRD2
+0A95    3390    /opt/hercules/DASD/ZCPRD3
+0A96    3390    /opt/hercules/DASD/ZCIMS1
+0A97    3390    /opt/hercules/DASD/ZCIMS2
+0A98    3390    /opt/hercules/DASD/ZCIMS3
+0A99    3390    /opt/hercules/DASD/SARES1
+0A9A    3390    /opt/hercules/DASD/ZCBBN1
+0A9B    3390    /opt/hercules/DASD/ZCBBN2
+0A9D    3390    /opt/hercules/DASD/ZBWAS1
+0A9E    3390    /opt/hercules/DASD/ZBWAS2
+0A9F    3390    /opt/hercules/DASD/ZBWAS3
+
+# DASD Devices CABRAL
+0AA0    3390    /opt/hercules/DASD/PAG001
+0AA1    3390    /opt/hercules/DASD/WORK00
+0AA2    3390    /opt/hercules/DASD/WORK01
+0AA3    3390    /opt/hercules/DASD/WORK02
+0AA4    3390    /opt/hercules/DASD/CAB001
+0AA5    3390    /opt/hercules/DASD/CAB002
+0AA6    3390    /opt/hercules/DASD/CAB003
+0AA7    3390    /opt/hercules/DASD/CAB004
+0AA8    3390    /opt/hercules/DASD/CAB005
+0AA9    3390    /opt/hercules/DASD/CAB006
+0AAA    3390    /opt/hercules/DASD/HSM001
+0AAB    3390    /opt/hercules/DASD/CABUSS
+0AAC    3390    /opt/hercules/DASD/CABMSM
+0AAD    3390    /opt/hercules/DASD/CABMS0
+0AAE    3390    /opt/hercules/DASD/CABUS1
+0AAF    3390    /opt/hercules/DASD/CABSMF
+0AB0    3390    /opt/hercules/DASD/ADDY01
+0AB1    3390    /opt/hercules/DASD/ADDY02
+0AB2    3390    /opt/hercules/DASD/ADDY03
+0AB3    3390    /opt/hercules/DASD/ADDY04
+0AB4    3390    /opt/hercules/DASD/ADDY05
+0AB5    3390    /opt/hercules/DASD/ADDY06
+
+
+#********************************************************************
+# DISPLAY TERMINALS                                                 *
+#********************************************************************
+0700    3270
+0701	3270
+0702	3270
+0703	3270
+0704	3270
+0705	3270
+0900	3270
+0901	3270
+0902	3270
+0903	3270
+0904	3270
+0905	3270
+0906	3270
+0907	3270
+0908	3270
+0801	3270
+0802	3270
+0803	3270
+0804	3270
+0805	3270
+0806	3270
+0807	3270
+
+#********************************************************************
+# CTCI COMMUNICATION DEVICES                                        *
+#********************************************************************
+0E20.2   LCS  172.17.128.20
+
+#********************************************************************
+# HOST OS TIPS/TRICKS                                               *
+#********************************************************************
+#sudo /sbin/sysctl -w net.ipv4.conf.eth0.proxy_arp=1
+#sudo /sbin/sysctl -w net.ipv4.conf.eth0.proxy_arp=1
+
+# TAPE Devices
+
+0560    3480    * awstape maxsizeM=170 eotmargin=131072 readonly=1
+0580    3490    * awstape maxsizeM=170 eotmargin=131072 readonly=1
+
